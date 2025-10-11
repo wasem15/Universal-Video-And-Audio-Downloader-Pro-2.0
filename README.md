@@ -1,265 +1,423 @@
-# 🤖 Universal Video Downloader Telegram Bot
+# Universal Video & Audio Downloader Pro 2.0
 
-A powerful Telegram bot that downloads videos and music from multiple platforms and sends them directly to users in Telegram!
+A powerful, feature-rich desktop application for downloading videos and audio from multiple platforms with a modern GUI interface.
 
-## 🎯 Features
+![Version](https://img.shields.io/badge/version-2.0-blue)
+![Python](https://img.shields.io/badge/python-3.7+-green)
+![License](https://img.shields.io/badge/license-MIT-orange)
 
-### 📱 **Multi-Platform Support**
-- 📺 **YouTube** - Videos, music, playlists
-- 📷 **Instagram** - Posts, stories, reels
-- 🎵 **TikTok** - Videos, music
-- 👥 **Facebook** - Videos, posts
-- 🐦 **Twitter/X** - Videos, tweets
-- 🥊 **Kick** - Live streams, VODs
-- 🎮 **Twitch** - Clips, highlights
-- 🎬 **Vimeo** - Videos
-- 🎶 **SoundCloud** - Music, tracks
-- 🔗 **Reddit** - Videos, clips
+## 🌟 Features
 
-### 🎬 **Download Options**
-- **Video Formats:** MP4 (360p to 4K)
-- **Audio Formats:** MP3, M4A, Opus, FLAC
-- **Quality Selection:** Choose your preferred quality
-- **Smart Detection:** Automatic platform detection
-- **File Size Optimization:** Automatic compression
+### Multi-Platform Support
+Download content from:
+- **YouTube** (videos, playlists, live streams)
+- **YouTube Music** (audio optimization)
+- **Instagram** (posts, reels, stories)
+- **Facebook** (videos, live streams)
+- **TikTok** (videos, live streams)
+- **Twitter/X** (videos, threads)
+- **Kick** (VODs, clips, live streams)
+- **Twitch** (VODs, clips, live streams)
+- **Vimeo** (videos)
+- **Dailymotion** (videos)
+- **SoundCloud** (tracks, playlists)
+- **Reddit** (videos)
+- And more generic URLs!
 
-### 🚀 **Bot Features**
-- **Interactive Interface:** Easy-to-use buttons and menus
-- **Progress Updates:** Real-time download status
-- **Error Handling:** Clear error messages and recovery
-- **Statistics:** Download stats and success rates
-- **File Management:** Automatic cleanup of temporary files
+### Download Options
+- **Video Downloads**
+  - Multiple quality options: 2160p, 1440p, 1080p, 720p, 480p, 360p, or highest available
+  - Automatic format selection (MP4)
+  - Merges video and audio streams for best quality
+  
+- **Audio-Only Downloads**
+  - Multiple format options: MP3, M4A, OPUS, FLAC, or best available
+  - High-quality audio extraction (up to 320kbps)
+  - Automatic metadata embedding
+  - Thumbnail embedding for MP3/M4A files
 
-## 🛠 Installation & Setup
+### User Interface
+- **Modern GUI** with clean, intuitive design
+- **Ultra-smooth progress bar** with 120fps animation
+- **Real-time progress tracking** with download size display
+- **Platform auto-detection** from pasted URLs
+- **Clipboard monitoring** - automatically detects URLs from clipboard
+- **Drag-and-drop support** (optional, requires tkinterdnd2)
+- **Configuration persistence** - remembers your settings
 
-### **Quick Start (Automated Setup)**
-
-1. **Clone or download this folder**
-2. **Run the setup script:**
-   ```bash
-   python setup_bot.py
-   ```
-3. **Follow the interactive setup**
-4. **Start the bot:**
-   ```bash
-   python telegram_bot.py
-   ```
-
-### **Manual Setup**
-
-1. **Install Python 3.8+**
-2. **Install dependencies:**
-   ```bash
-   pip install -r requirements.txt
-   ```
-3. **Create a Telegram bot:**
-   - Message @BotFather on Telegram
-   - Send `/newbot`
-   - Follow instructions to get your bot token
-4. **Create `.env` file:**
-   ```env
-   TELEGRAM_BOT_TOKEN=your_bot_token_here
-   BOT_USERNAME=your_bot_username
-   ```
-5. **Run the bot:**
-   ```bash
-   python telegram_bot.py
-   ```
+### Advanced Features
+- **Playlist support** for YouTube, SoundCloud, and YouTube Music
+- **Live stream recording** for supported platforms
+- **Multi-threaded downloads** for optimal performance
+- **Instant stop functionality** with aggressive process termination
+- **Special Kick.com handling** with optimized streaming options
+- **Automatic retry** on network failures
+- **Fragment recovery** for interrupted downloads
+- **Custom headers** to bypass restrictions
 
 ## 📋 Requirements
 
-### **System Requirements**
-- Python 3.8 or higher
-- Internet connection
-- FFmpeg (recommended for audio conversion)
-
-### **Python Dependencies**
-- `python-telegram-bot` - Telegram Bot API
-- `yt-dlp` - Video/audio downloader
-- `python-dotenv` - Environment variables
-
-### **Optional Dependencies**
-- `ffmpeg` - For audio conversion and processing
-
-## 🎮 How to Use
-
-### **For Users (Telegram)**
-1. **Find your bot:** Search for your bot username on Telegram
-2. **Start the bot:** Send `/start`
-3. **Send a link:** Paste any video/music URL
-4. **Choose format:** Select video or audio
-5. **Select quality:** Choose your preferred quality
-6. **Wait for download:** Bot will send the file when ready!
-
-### **For Bot Owner (Server)**
-1. **Start the bot:** Run `python telegram_bot.py`
-2. **Keep it running:** Bot needs to stay online
-3. **Monitor logs:** Check for errors or issues
-4. **Update regularly:** Keep dependencies updated
-
-## 🔧 Configuration
-
-### **Environment Variables (.env file)**
-```env
-# Required
-TELEGRAM_BOT_TOKEN=your_bot_token_here
-BOT_USERNAME=your_bot_username
-
-# Optional
-TEMP_DIR=temp_downloads
-MAX_FILE_SIZE=2147483648
+### Python Dependencies
+```
+python >= 3.7
+yt-dlp >= 2023.0.0
+psutil
+tkinter (usually comes with Python)
+tkinterdnd2 (optional, for drag-and-drop)
 ```
 
-### **Bot Commands**
-- `/start` - Show welcome message and menu
-- `/help` - Get help and usage instructions
-- `/stats` - Show download statistics
-- `/settings` - Show current settings
+### External Dependencies
+- **FFmpeg** - Required for video/audio conversion and merging
+  - Download from: https://ffmpeg.org/download.html
+  - Must be in system PATH or same directory as script
 
-## 📊 Bot Statistics
+## 🚀 Installation
 
-The bot tracks:
-- **Total Downloads:** Number of download attempts
-- **Successful Downloads:** Successful completions
-- **Failed Downloads:** Failed attempts
-- **Success Rate:** Percentage of successful downloads
+### 1. Clone or Download
+```bash
+git clone <repository-url>
+cd video_downloader
+```
 
-## 🚨 Important Notes
+### 2. Install Python Dependencies
+```bash
+pip install -r requirements.txt
+```
 
-### **File Size Limits**
-- **Videos:** Up to 2GB (Telegram limit)
-- **Audio:** Up to 50MB (recommended)
-- **Larger files:** Will show error message
+Or install manually:
+```bash
+pip install yt-dlp psutil
+pip install tkinterdnd2  # Optional, for drag-and-drop
+```
 
-### **Platform Limitations**
-- Some platforms may require cookies
-- Private/restricted content cannot be downloaded
-- Live streams may have limitations
-- Some platforms may block automated downloads
+### 3. Install FFmpeg
 
-### **Server Requirements**
-- Stable internet connection
-- Sufficient disk space for temporary files
-- Regular cleanup of temp files
-- Keep bot running 24/7 for availability
+#### Windows
+1. Download FFmpeg from https://ffmpeg.org/download.html
+2. Extract to a folder (e.g., `C:\ffmpeg`)
+3. Add `C:\ffmpeg\bin` to system PATH
 
-## 🔒 Security & Privacy
+#### macOS
+```bash
+brew install ffmpeg
+```
 
-### **Data Handling**
-- Temporary files are automatically deleted
-- No permanent storage of downloaded content
-- User data is not stored or logged
-- Bot only processes URLs sent by users
+#### Linux
+```bash
+sudo apt install ffmpeg  # Ubuntu/Debian
+sudo dnf install ffmpeg  # Fedora
+```
 
-### **Rate Limiting**
-- Built-in rate limiting to prevent abuse
-- File size limits to prevent server overload
-- Error handling for failed downloads
+### 4. Run the Application
+```bash
+python video_downloader.py
+```
 
-## 🛠 Troubleshooting
+## 💻 Usage
 
-### **Common Issues**
+### Basic Usage
+1. **Launch the application**
+   ```bash
+   python video_downloader.py
+   ```
 
-#### **Bot not responding**
-- Check if bot is running
-- Verify bot token is correct
-- Check internet connection
-- Review error logs
+2. **Enter or paste a video URL**
+   - The platform will be auto-detected
+   - Or copy a URL to clipboard (it will be auto-detected)
 
-#### **Download failures**
-- Check if URL is valid and public
-- Some platforms may block automated downloads
-- Try different quality settings
-- Check file size limits
+3. **Select download type**
+   - Choose between Video or Audio Only
 
-#### **File too large errors**
-- Try downloading audio instead of video
-- Select lower quality
-- Some videos are too large for Telegram
+4. **Choose quality/format**
+   - For videos: Select quality (highest, 2160p, 1440p, 1080p, 720p, 480p, 360p)
+   - For audio: Select format (MP3, M4A, OPUS, FLAC, or best)
 
-### **Error Messages**
-- **"No valid URL found"** - Send a proper video/music link
-- **"Unsupported platform"** - Use supported platforms only
-- **"Download failed"** - Try again or contact support
-- **"File too large"** - Try audio format or lower quality
+5. **Select download location**
+   - Browse to your preferred folder
+   - Default: `~/Downloads`
 
-## 📈 Performance Optimization
+6. **Click Download**
+   - Watch the progress bar for real-time updates
+   - Stop anytime with the Stop button
 
-### **Server Optimization**
-- Use SSD storage for faster I/O
-- Sufficient RAM for processing
-- Fast internet connection
-- Regular system maintenance
+### Advanced Usage
 
-### **Bot Optimization**
-- Monitor memory usage
-- Clean up temp files regularly
-- Update dependencies
-- Monitor download success rates
+#### Command-Line Integration
+```python
+from video_downloader import DownloadManager
 
-## 🔄 Updates & Maintenance
+# Create download manager
+manager = DownloadManager()
 
-### **Regular Updates**
-- Update `yt-dlp` for latest platform support
-- Update `python-telegram-bot` for API changes
-- Monitor for security updates
-- Test with new platforms
+# Download video
+success, message = manager.download(
+    url="https://youtube.com/watch?v=...",
+    output_path="/path/to/downloads",
+    download_type='video',
+    quality='1080p'
+)
 
-### **Maintenance Tasks**
-- Clean up temp files
-- Monitor disk space
-- Check error logs
-- Update bot features
+# Download audio
+success, message = manager.download(
+    url="https://soundcloud.com/...",
+    output_path="/path/to/downloads",
+    download_type='audio',
+    audio_format='mp3'
+)
+```
+
+#### Platform Detection
+```python
+from video_downloader import PlatformDetector
+
+# Detect platform
+platform_id, platform_info = PlatformDetector.detect(url)
+print(f"Platform: {platform_info['name']}")
+print(f"Supports playlists: {platform_info['supports_playlist']}")
+print(f"Live support: {platform_info['live_support']}")
+
+# Check if playlist
+is_playlist = PlatformDetector.is_playlist(url)
+```
+
+## 🎯 Features Explained
+
+### Platform Detection
+The application automatically detects the source platform and optimizes download settings:
+- **YouTube**: Full quality options, playlist support
+- **Instagram**: Automatic cookie handling for private content
+- **TikTok**: Optimized for TikTok video format
+- **Kick**: Special handling for live streams and VODs
+- **Twitter/X**: Protocol filtering for best compatibility
+
+### Download Management
+- **Threading**: Downloads run in background threads for responsive UI
+- **Progress Tracking**: Real-time progress with byte-level accuracy
+- **Smart Stopping**: Immediate termination with process cleanup
+- **Error Handling**: Comprehensive error messages with recovery suggestions
+
+### Smooth Progress Bar
+- **120fps Animation**: Ultra-smooth progress updates
+- **Dynamic Easing**: Adaptive animation speed based on progress
+- **Visual Feedback**: Instant UI response for better UX
+
+### Configuration Persistence
+Settings are saved to `~/.video_downloader_config.json`:
+```json
+{
+  "download_path": "/path/to/downloads",
+  "download_type": "video",
+  "video_quality": "720p",
+  "audio_format": "mp3"
+}
+```
+
+## 🛠️ Architecture
+
+### Class Structure
+
+#### `PlatformDetector`
+- Handles URL validation and platform identification
+- Maintains platform database with patterns and capabilities
+- Provides playlist detection
+
+#### `DownloadManager`
+- Core download logic with yt-dlp integration
+- Progress callback system
+- Thread-safe download management
+- Special handling for different platforms
+
+#### `YouTubeDownloader`
+- Main GUI application class
+- UI setup and event handling
+- Configuration management
+- Clipboard monitoring
+- Smooth animation system
+
+### Key Methods
+
+```python
+# Download control
+download()                    # Start download with full options
+stop_download()              # Immediate stop with cleanup
+reset()                      # Reset download state
+
+# UI updates
+on_progress(d)               # Handle yt-dlp progress hooks
+on_status_update(message)    # Update status messages
+_animate_progress()          # Smooth progress bar animation
+
+# Configuration
+load_config()                # Load saved settings
+save_config()                # Persist current settings
+```
+
+## ⚙️ Configuration Options
+
+### Video Quality Options
+| Option | Resolution | Use Case |
+|--------|-----------|----------|
+| `highest` | Best available | Maximum quality |
+| `2160p` | 4K | Ultra HD displays |
+| `1440p` | 2K | High-end monitors |
+| `1080p` | Full HD | Standard HD |
+| `720p` | HD | Balanced quality/size |
+| `480p` | SD | Smaller files |
+| `360p` | Low | Limited bandwidth |
+
+### Audio Format Options
+| Format | Quality | File Size | Compatibility |
+|--------|---------|-----------|---------------|
+| `mp3` | High (320kbps) | Medium | Universal |
+| `m4a` | Very High | Medium-Small | Apple devices |
+| `opus` | Very High | Small | Modern players |
+| `flac` | Lossless | Large | Audiophiles |
+| `best` | Original | Varies | Best available |
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+#### "FFmpeg not found"
+**Solution**: Install FFmpeg and add to system PATH
+```bash
+# Check if FFmpeg is installed
+ffmpeg -version
+```
+
+#### "Could not extract video information"
+**Solutions**:
+1. Check if URL is valid and accessible
+2. Try updating yt-dlp: `pip install -U yt-dlp`
+3. Some content may require login cookies
+
+#### "Download failed: 403 Forbidden"
+**Solutions**:
+1. Content may be private or geo-restricted
+2. For Instagram/Facebook, try logging in to browser first
+3. The application will attempt to use browser cookies
+
+#### "Live stream has ended"
+**Solution**: Live streams can only be downloaded while active
+
+#### Download is slow
+**Solutions**:
+1. Check your internet connection
+2. Try a lower quality setting
+3. The platform may be rate-limiting
+
+### Platform-Specific Issues
+
+#### Kick.com Downloads
+- Live streams download in real-time (may be lengthy)
+- VODs and clips work like regular downloads
+- Requires active stream for live content
+
+#### Instagram/Facebook
+- May require browser cookies for private content
+- Application attempts to use Chrome cookies automatically
+- Login to Chrome first for best results
+
+#### TikTok
+- Sometimes shortened URLs need expansion
+- Try using full TikTok URL format
+
+## 🔒 Privacy & Security
+
+- **No Data Collection**: All downloads are local
+- **Cookie Handling**: Uses local browser cookies only when needed
+- **No Account Required**: Works with public content
+- **Source Code**: Fully transparent and auditable
+
+## 📝 License
+
+This project is provided for educational purposes. Users are responsible for complying with the terms of service of the platforms they download from.
+
+## 🤝 Contributing
+
+Contributions are welcome! Areas for improvement:
+- Additional platform support
+- UI enhancements
+- Performance optimizations
+- Bug fixes and error handling
+- Documentation improvements
 
 ## 📞 Support
 
-### **Getting Help**
-1. Check this README for common issues
-2. Review error logs for specific problems
-3. Test with different URLs and platforms
-4. Contact support for persistent issues
+For issues and questions:
+1. Check the Troubleshooting section
+2. Update yt-dlp: `pip install -U yt-dlp`
+3. Verify FFmpeg installation
+4. Check platform-specific notes
 
-### **Reporting Issues**
-- Include error messages
-- Provide example URLs that fail
-- Share relevant log entries
-- Describe steps to reproduce
+## 🔄 Updates
 
-## 🎉 Success Stories
+### Version 2.0 Features
+- ✅ Multi-platform support (12+ platforms)
+- ✅ Ultra-smooth 120fps progress bar
+- ✅ Instant stop functionality
+- ✅ Clipboard monitoring
+- ✅ Platform auto-detection
+- ✅ Configuration persistence
+- ✅ Special Kick.com handling
+- ✅ Playlist support
+- ✅ Live stream recording
 
-Users love this bot because:
-- ✅ **Easy to use** - Just send a link!
-- ✅ **Fast downloads** - Optimized for speed
-- ✅ **Multiple platforms** - Works with popular sites
-- ✅ **Quality options** - Choose your preferred quality
-- ✅ **Reliable** - Handles errors gracefully
-- ✅ **Free to use** - No subscription required
+## 🌐 Supported URL Examples
 
-## 🚀 Advanced Features
+```
+# YouTube
+https://youtube.com/watch?v=...
+https://youtu.be/...
+https://music.youtube.com/...
 
-### **Customization Options**
-- Modify supported platforms
-- Adjust file size limits
-- Custom quality options
-- Add new download formats
+# Instagram
+https://instagram.com/p/...
+https://instagram.com/reel/...
 
-### **Integration Possibilities**
-- Web dashboard for statistics
-- User management system
-- Payment integration
-- Advanced analytics
+# TikTok
+https://tiktok.com/@user/video/...
+https://vm.tiktok.com/...
+
+# Twitter/X
+https://twitter.com/user/status/...
+https://x.com/user/status/...
+
+# Kick
+https://kick.com/username
+https://kick.com/username/video/...
+
+# Twitch
+https://twitch.tv/username
+https://clips.twitch.tv/...
+
+# Facebook
+https://facebook.com/watch/?v=...
+https://fb.watch/...
+
+# And many more!
+```
+
+## ⚡ Performance Tips
+
+1. **Use appropriate quality**: Higher quality = larger files and slower downloads
+2. **Close other apps**: Free up bandwidth for faster downloads
+3. **SSD storage**: Faster write speeds improve download performance
+4. **Update regularly**: Keep yt-dlp updated for best compatibility
+5. **Stable connection**: Wired connection recommended for large downloads
+
+## 🎨 UI Features
+
+- **Responsive Design**: Adjusts to window resizing
+- **Theme Support**: Uses system theme colors
+- **Status Indicators**: Clear visual feedback for all states
+- **Progress Details**: Shows download size and percentage
+- **Platform Icons**: Visual indicators for detected platforms
+- **Smooth Animations**: Professional, fluid UI transitions
 
 ---
 
-## 🎯 Ready to Deploy!
+**Made with ❤️ for content creators and enthusiasts**
 
-Your Telegram Video Downloader Bot is ready to serve users worldwide! 
+*Remember to respect copyright and terms of service when downloading content!*
 
-**Key Benefits:**
-- 🌍 **Global Access** - Works anywhere with internet
-- 📱 **Mobile Friendly** - Perfect for mobile users
-- 🎬 **Multi-Platform** - Supports all major platforms
-- ⚡ **Fast & Reliable** - Optimized for performance
-- 🔒 **Secure** - No data storage or privacy issues
-
-**Start your bot and let users download videos with just a link!** 🚀
