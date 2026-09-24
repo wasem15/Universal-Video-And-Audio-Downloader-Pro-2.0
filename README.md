@@ -71,7 +71,3 @@ The main module separates responsibilities into concepts such as:
 ## Responsible use
 
 Platform support can change with upstream services and yt-dlp releases. Users are responsible for respecting each platform's terms of service, access controls, and applicable copyright rules.
-
-## Portfolio context
-
-This is the main media-downloader project in the portfolio. It demonstrates desktop Python development, external process integration, network-facing workflows, and stateful GUI design. Other downloader repositories are intentionally treated as supporting/legacy experiments rather than separate flagship projects.
